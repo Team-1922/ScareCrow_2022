@@ -14,10 +14,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class DriveTrainSubsystem extends SubsystemBase {
-  private WPI_TalonFX frontLeft = new cantest(Constants.FrontLeft);
-  private WPI_TalonFX frontRight = new cantest(Constants.FrontRight);
-  private WPI_TalonFX backLeft = new cantest(Constants.BackLeft);
-  private WPI_TalonFX backRight = new cantest(Constants.BackRight);
+  private cantest frontLeft = new cantest(Constants.FrontLeft);
+  private cantest frontRight = new cantest(Constants.FrontRight);
+  private cantest backLeft = new cantest(Constants.BackLeft);
+  private cantest backRight = new cantest(Constants.BackRight);
   /** Creates a new DriveTrainSubsystem. */
   public DriveTrainSubsystem() {
     backLeft.set(ControlMode.Follower, frontLeft.getDeviceID());
