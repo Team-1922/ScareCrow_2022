@@ -34,7 +34,7 @@ public class cantest extends WPI_TalonFX {
 
   @Override public void set(double value)
  {
-   if(value !=m_lastSet ) 
+   if(value != m_lastSet ) 
    {
      m_lastSet= value;
      super.set(value);
