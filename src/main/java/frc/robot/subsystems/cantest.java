@@ -21,6 +21,7 @@ public class cantest extends WPI_TalonFX {
  super (deviceid);
 
   }
+  
  @Override public void set(TalonFXControlMode mode, double value  )
  {
    if(value !=m_lastSet || mode !=m_lastControlMode) 
@@ -28,9 +29,12 @@ public class cantest extends WPI_TalonFX {
      m_lastSet= value;
      m_lastControlMode = mode;
      super.set(mode, value);
+     // System.out.print("CAN message");
    }
   
   }
+
+  
 
   @Override public void set(double value)
  {

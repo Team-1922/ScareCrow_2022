@@ -4,6 +4,9 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -14,6 +17,9 @@ public class TankDrive extends CommandBase {
   DriveTrainSubsystem m_driveTrain;
   private Joystick m_joystickRight;
   private Joystick m_joystickLeft;
+
+  NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+  NetworkTableEntry tx = table.getEntry("tx");
 
   /** Creates a new TankDrive. */
   public TankDrive(DriveTrainSubsystem driveTrain, Joystick joystickLeft, Joystick joystickRight){
@@ -33,7 +39,8 @@ public class TankDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_driveTrain.drive(m_joystickLeft.getY()*.25, m_joystickRight.getY()*.25);
+    //(Math.pow(m_joystickLeft.getY(),3)*0.8+(m_joystickLeft.getY())*0.2)*1.00, (Math.pow(m_joystickRight.getY(),3)*0.8+(m_joystickRight.getY())*0.2)*1.00
+    m_driveTrain.drive((m_joystickLeft.getY()*0.6-m_joystickRight.getX()*0.5*(1-Math.abs(m_joystickLeft.getY()/3))*0.5),(m_joystickLeft.getY()*0.6+m_joystickRight.getX()*0.5*(1-Math.abs(m_joystickLeft.getY()/3))*0.5));
   }
 
   // Called once the command ends or is interrupted.
