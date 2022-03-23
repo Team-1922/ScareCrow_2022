@@ -18,6 +18,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
   private cantest frontRight = new cantest(Constants.FrontRight);
   private cantest backLeft = new cantest(Constants.BackLeft);
   private cantest backRight = new cantest(Constants.BackRight);
+
+  private double m_lastDriveRight = Double.NaN;
+  private double m_lastDriveLeft = Double.NaN;
+  
   /** Creates a new DriveTrainSubsystem. */
   public DriveTrainSubsystem() {
     backLeft.set(ControlMode.Follower, frontLeft.getDeviceID());
@@ -34,9 +38,19 @@ public class DriveTrainSubsystem extends SubsystemBase {
   }
 
   public void drive(double left, double right){
+
+
+    if ( m_lastDriveLeft != left) {
+   m_lastDriveLeft = left;
     frontLeft.set(left);
+  }
+
+  if (m_lastDriveRight != right) {
+m_lastDriveRight = right;
     frontRight.set(right);
 
+  }
+    
   }
 }
 
