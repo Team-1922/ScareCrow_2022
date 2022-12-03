@@ -9,11 +9,13 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 //import frc.robot.commands.AvoidWall;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.Lights;
 //import frc.robot.commands.TOFDistance;
 import frc.robot.commands.TankDrive;
 import frc.robot.commands.TankDriveXbox;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.LED;
 //import frc.robot.subsystems.TOF;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -34,13 +36,13 @@ public class RobotContainer {
 
   private final Joystick m_joystickLeft = new Joystick(0);
   private final Joystick m_joystickRight = new Joystick(1);
-
+  private final LED m_LED = new LED();
   private final XboxController m_XBoxController = new XboxController(2);
 
 
 
   //Commands ---- Go Here ------ Please ------ Thank you
-
+private final Lights m_lights = new Lights(m_LED);
 private final TankDrive m_tankDrive = new TankDrive(m_driveTrain, m_joystickLeft, m_joystickRight);
 private final TankDriveXbox m_tankDriveXbox = new TankDriveXbox(m_driveTrain, m_XBoxController);
 //private final TOFDistance m_TOFDistance = new TOFDistance(m_TOF);
@@ -53,7 +55,7 @@ private final TankDriveXbox m_tankDriveXbox = new TankDriveXbox(m_driveTrain, m_
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    m_driveTrain.setDefaultCommand(m_tankDrive);
+    m_driveTrain.setDefaultCommand(m_tankDriveXbox);
     //m_TOF.setDefaultCommand(m_TOFDistance);
   }
 
@@ -67,7 +69,10 @@ private final TankDriveXbox m_tankDriveXbox = new TankDriveXbox(m_driveTrain, m_
 
  //   new JoystickButton(m_XBoxController, 1) //A
    //       .whenPressed(m_avoidWall);
-
+ 
+      new JoystickButton(m_XBoxController, 1)
+            .whenPressed(m_lights);
+           
   }
 
 
