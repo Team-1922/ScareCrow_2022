@@ -7,10 +7,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.LED;
   
-public class Lights extends CommandBase {
+public class Lights2 extends CommandBase {
   LED m_LED; 
   /** Creates a new Lights. */
-  public Lights( LED LED) {
+  public Lights2( LED LED) {
   
 m_LED = LED;
     addRequirements(LED);
@@ -25,7 +25,7 @@ m_LED = LED;
   @Override
   public void execute() {
 
-    m_LED.lightAnimate(100,0,0);
+    m_LED.lightUp(255,0,200);
   }
 
   // Called once the command ends or is interrupted.

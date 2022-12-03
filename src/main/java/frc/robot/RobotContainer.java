@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 //import frc.robot.commands.AvoidWall;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Lights;
+import frc.robot.commands.Lights2;
 //import frc.robot.commands.TOFDistance;
 import frc.robot.commands.TankDrive;
 import frc.robot.commands.TankDriveXbox;
@@ -43,6 +44,7 @@ public class RobotContainer {
 
   //Commands ---- Go Here ------ Please ------ Thank you
 private final Lights m_lights = new Lights(m_LED);
+private final Lights2 m_lights2 = new Lights2(m_LED);
 private final TankDrive m_tankDrive = new TankDrive(m_driveTrain, m_joystickLeft, m_joystickRight);
 private final TankDriveXbox m_tankDriveXbox = new TankDriveXbox(m_driveTrain, m_XBoxController);
 //private final TOFDistance m_TOFDistance = new TOFDistance(m_TOF);
@@ -72,6 +74,10 @@ private final TankDriveXbox m_tankDriveXbox = new TankDriveXbox(m_driveTrain, m_
  
       new JoystickButton(m_XBoxController, 1)
             .whenPressed(m_lights);
+          
+      new JoystickButton(m_XBoxController, 2)
+        .whenPressed(m_lights2);
+
            
   }
 
