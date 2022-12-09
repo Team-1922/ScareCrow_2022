@@ -9,6 +9,7 @@ import com.ctre.phoenix.led.CANdle;
 import com.ctre.phoenix.led.RainbowAnimation;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 public class LED extends SubsystemBase {
   /** Creates a new LED. */
@@ -22,13 +23,20 @@ public class LED extends SubsystemBase {
 
   public void lightAnimate( int R,int G, int B){
    
-  RainbowAnimation rainbowAnimation = new RainbowAnimation(.5, .1, 8);
+  RainbowAnimation rainbowAnimation = new RainbowAnimation(.5, .5, 100);
   m_CANdle.animate(rainbowAnimation); 
   
   }
+  
+  public void lightAnimate2( int R,int G, int B){
+    
+    RainbowAnimation rainbowAnimation2 = new RainbowAnimation(255, 1, 100);
+    m_CANdle.animate(rainbowAnimation2); 
+    }
 
   public void lightUp( int R,int G, int B){
     m_CANdle.setLEDs( R,G,B);
+ 
     
    // m_CANdle.setLEDOutput(R, CANdle.LEDChannel.LEDChannelB);
     //m_CANdle.setLEDOutput(B, CANdle.LEDChannel.LEDChannelC);

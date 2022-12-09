@@ -25,7 +25,7 @@ m_LED = LED;
   @Override
   public void execute() {
 
-    m_LED.lightUp(255,0,200);
+    m_LED.lightAnimate(255,0,200);
   }
 
   // Called once the command ends or is interrupted.

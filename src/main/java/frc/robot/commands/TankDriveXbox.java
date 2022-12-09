@@ -36,7 +36,7 @@ m_xboxController = xboxController;
   @Override
   public void execute() {
 
-    m_driveTrain.drive(m_xboxController.getRawAxis(1)*.15, m_xboxController.getRawAxis(5)*.15);
+    m_driveTrain.drive(m_xboxController.getRawAxis(1)*.150, m_xboxController.getRawAxis(3)*.150);
   }
 
   // Called once the command ends or is interrupted.
