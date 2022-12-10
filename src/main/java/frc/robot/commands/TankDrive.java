@@ -39,10 +39,19 @@ public class TankDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    
+    double turningScale = 0.5*(1-Math.abs(m_joystickLeft.getY()/3))*0.5; 
+    double throttleScale = 0.25;
+    
+    double arcadedrivepartone  = m_joystickLeft.getY()*throttleScale-m_joystickRight.getX()*turningScale;
+    double arcadedriveparttwo =m_joystickLeft.getY()*throttleScale+m_joystickRight.getX()*turningScale;
+ 
+    m_driveTrain.drive(arcadedrivepartone, arcadedriveparttwo);
     //(Math.pow(m_joystickLeft.getY(),3)*0.8+(m_joystickLeft.getY())*0.2)*1.00, (Math.pow(m_joystickRight.getY(),3)*0.8+(m_joystickRight.getY())*0.2)*1.00
-    m_driveTrain.drive((m_joystickLeft.getY()*0.6-m_joystickRight.getX()*0.5*(1-Math.abs(m_joystickLeft.getY()/3))*0.5),(m_joystickLeft.getY()*0.6+m_joystickRight.getX()*0.5*(1-Math.abs(m_joystickLeft.getY()/3))*0.5));
-  }
+   //m_driveTrain.drive((m_joystickLeft.getY()*0.6-m_joystickRight.getX()*0.5*(1-Math.abs(m_joystickLeft.getY()/3))*0.5),(m_joystickLeft.getY()*0.6+m_joystickRight.getX()*0.5*(1-Math.abs(m_joystickLeft.getY()/3))*0.5));
+   //m_driveTrain.drive(m_joystickLeft.getY() * 0.20, m_joystickRight.getY() * 0.20);
 
+  }
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {}
